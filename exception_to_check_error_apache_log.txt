@@ -1,0 +1,5 @@
+\[:error\] \[pid.*\] python_init: Python version mismatch
+\[:error\] \[pid.*\] python_init: Python executable found
+\[:error\] \[pid.*\] python_init: Python path being used
+\[ssl:error\] \[pid.*\] AH02217: ssl_stapling_init_cert: can't retrieve issuer certificate
+\[ssl:error\] \[pid.*\] AH02604: Unable to configure certificate.*for stapling
