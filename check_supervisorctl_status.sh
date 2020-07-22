@@ -1,7 +1,7 @@
 #!/bin/bash
 # by deibyd (20200722) : script que notifica si el supervisor tiene algun problema de estado
 
-MAILS=dlopez@onemarketer.cl
+MAILS=noc@onemarketer.cl
 
 function write_log() {
         logger "$(basename $0) - $1"
