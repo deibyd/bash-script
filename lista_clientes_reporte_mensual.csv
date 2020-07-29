@@ -1,0 +1,80 @@
+Abbott,Costa Rica,Contact Center,demo-6,192.168.1.19,wa,5,0,5dea946aab0d8e001055ee97,,x,x,x,,,x
+Petroautos,Panama,Contact Center,demo-2,192.168.1.220,wa,7,0,5e791a267f265b001069429e,,x,x,x,,,x
+Grupo Marina,Peru,Contact Center,demo-1,192.168.1.203,wa,79,0,5dfbe385fe97b40010e9c2d3,,x,x,x,,,x
+Rosselot,Chile,Contact Center,omc,192.168.1.201,wa,38,0,,,x,,,,,
+GeoBpo,Chile,Facebook,demo-4,192.168.1.32,wa,30,,,,x,,,,,
+GeoBpo,Chile,WOM Televentas,demo-1,192.168.1.203,wa,67,0,5d5ac87f2e53df0010b2b1f2,,x,x,x,,,x
+GeoBpo,Chile,Supervision WOM,demo-1,192.168.1.203,wa,81,,,,x,,,,,
+La Polar,Chile,Contact Center,demo-4,192.168.1.32,wa,10,0,5d79453db854a6001039e36e,,x,x,x,,,x
+RAC Inspecciones,Chile,Contact Center,demo-2,192.168.1.220,wa,43,0,5e8df50a85f2f10011507dd4,,x,x,x,,,x
+Telefonica,Argentina,Locadores,demo-6,192.168.1.19,wa,16,,,,x,,,,,
+Telefonica,Argentina,B2C Chatbot,ommovar,192.168.1.250,wa,1,0,,,x,,,,x,
+Telefonica,Argentina,B2B,ommovar,192.168.1.250,wa,4,0,,,x,,,x,x,
+Telefonica,Peru,B2B,om-movec,192.168.1.251,wa,67,4,5d928769d402f30010f73e27,,x,x,x,,,x
+Telefonica,Peru,B2C,movperub2c,192.168.1.28,wa,1,,,,x,,,,,
+Posadas,Mexico,Contexto Plan Seguro 2,demo-2,192.168.1.220,wa,44,,,,x,,,,,
+Posadas,Mexico,Contexto Corporate,demo-2,192.168.1.220,wa,42,,,,x,,,,,
+Posadas,Mexico,Contexto Neg. Especialess Provac,demo-2,192.168.1.220,wa,41,,,,x,,,,,
+Posadas,Mexico,Contexto Plan seguro,demo-2,192.168.1.220,wa,35,,,,x,,,,,
+Posadas,Mexico,Contexto Referidos,demo-2,192.168.1.220,wa,34,,,,x,,,,,
+Posadas,Mexico,Contexto Larc,demo-2,192.168.1.220,wa,29,,,,x,,,,,
+Posadas,Mexico,Contexto Re_set,demo-2,192.168.1.220,wa,28,,,,x,,,,,
+Posadas,Mexico,Contexto Kivac,demo-2,192.168.1.220,wa,27,,,,x,,,,,
+Posadas,Mexico,Contexto Fiesta Americana Vacation Club,demo-2,192.168.1.220,wa,26,,,,x,,,,,
+Posadas,Mexico,Contexto Atraccion de talentos,demo-2,192.168.1.220,wa,25,,,,x,,,,,
+Posadas,Mexico,Contexto Fiesta Rewards,demo-2,192.168.1.220,wa,20,,,,x,,,,,
+Posadas,Mexico,Contexto Posadas,demo-2,192.168.1.220,wa,11,0,5e0de892a3e0580010b32651,,x,x,x,,,x
+Banco Promerica,Guatemala,Cobros,demo-3,192.168.1.5,wa,23,,,,x,,,,,
+Banco Promerica,Guatemala,Ventas,demo-3,192.168.1.5,wa,21,,,,x,,,,,
+Banco Promerica,Guatemala,Contact Center,demo-3,192.168.1.5,wa,15,0,5d497322afb91e00125a9833,,x,x,x,,,x
+Telefonica,Costa Rica,Contact Center,om-movcr,192.168.1.200,wa,36,,,,x,,,,x,
+Avon,Mexico,Prospectos,demo-4,192.168.1.32,wa,31,0,5ddfc4aaa5662a00105e7cf4,,x,x,x,,,x
+Avon,Mexico,CARD,demo-4,192.168.1.32,wa,33,0,5ddfc4c7e2f33c00101cb88f,,x,x,x,,,x
+Avon,Mexico,Cerca de ti,demo-4,192.168.1.32,wa,34,0,5e3898b417e8a7000fe5114c,,x,x,x,,,x
+Digicel,Panama,Contact Center Panamá,demo-5,192.168.1.254,wa,26,5,5d0aa1c814573b001003b555,,x,x,x,,,x
+Digicel,Panama,Recargas,demo-5,192.168.1.254,wa,39,0,5ea9a07969f9ed000fd94722,,x,x,x,,,x
+Digicel,Curazao,Curaçao,demo-5,192.168.1.254,wa,40,0,5eb01377ac1707000f10c0e6,,x,x,x,,,x
+Claro,Salvador,Contact Center,demo-7,192.168.1.23,wa,1,0,5ddfd484eb4139001140a9e0,,x,x,x,,,x
+Claro Sixbell,Guatemala,,omsixbellwae,192.168.1.4,wa,,,,3,,x,x,,,
+Claro Sixbell,Honduras,,omsixbellwae,192.168.1.4,wa,,,,6,,x,x,,,
+Claro Sixbell,Nicaragua,,omsixbellwae,192.168.1.4,wa,,,,2,,x,x,,,
+Claro Sixbell,Panama,,sixbell,192.168.1.4,wa,,,,4,,x,x,,,
+WOM,Chile,Contact Center RRSS,om-wom-new,192.168.1.239,wa,1,0,5d3f623080831f0013028832,,x,x,x,,,x
+WOM,Chile,Tiendas,om-wom-new,192.168.1.239,wa,2,,,,x,,,,,
+WOM,Chile,Internet Hogar,om-wom-new,192.168.1.239,wa,9,0,5e5d76ea418db0000ffe5bbe,,x,x,x,,,x
+WOM,Chile,Internet Hogar,om-wom-new,192.168.1.239,wa,9,2,5ed14a8cb76990000f101d7c,,x,x,x,,,x
+WOM,Chile,Servicio técnico,om-wom-new,192.168.1.239,wa,10,,,,x,,,,,
+WOM,Chile,Nivel 2 Datos,om-wom-new,192.168.1.239,wa,11,,,,x,,,,,
+LATAM,Chile,Black Signature Chile,om-latam,172.30.1.32,wa,1,0,5e0de8234a8cdb0010b69f19,,x,x,x,,,x
+LATAM,Brasil,Black Signature Brasil,om-latam,172.30.1.32,wa,2,0,5e457046a0ea830010d36b9c,,x,x,x,,,x
+LATAM,Chile,Black Chile,om-latam,172.30.1.32,wa,3,0,5e3c03d75bed1a0010952434,,x,x,x,,,x
+LATAM,Brasil,Black Brasil,om-latam,172.30.1.32,wa,4,0,5e5db9ce85cad8000fa5a5ec,,x,x,x,,,x
+LATAM,Colombia,Equipajes ES,om-latam,172.30.1.32,wa,7,0,5dfbe2a643d6ff000fb174a6,,x,x,x,,,x
+LATAM,Brasil,Equipajes Brasil,om-latam,172.30.1.32,wa,5,0,5e738a02b46584000fb6c931,,x,x,x,,,x
+LATAM,Brasil,Fale com agente,om-latam,172.30.1.32,wa,6,0,5e0de784514d1c0011f6439c,,x,x,x,,,x
+LATAM,Chile,Customer Service Chile,om-latam,172.30.1.32,wa,8,0,5de5b395c9070e0012e3f89d,,x,x,x,,,x
+Caja Los Andes,Chile,Contexto 1,ccla,192.168.7.242,wa,9,0,5cee93a42403dc00102a5f9e,,x,x,x,,,x
+Caja Los Andes,Chile,Contexto 2,ccla,192.168.7.242,wa,18,0,5d7944a3c8cdc40011dcceb4,,x,x,x,,,x
+Transbank,Chile,Contact Center,demo-6,192.168.1.19,wa,6,0,5db717dc0b8ff90011df58ee,,x,x,x,,,x
+Banco Ripley,Chile,Soluciones de Pago,demo-6,192.168.1.19,wa,20,0,5df804a099c01d00119d3156,,x,x,x,,,x
+Banco Ripley,Chile,Contact Center,demo-6,192.168.1.19,wa,7,0,5dd6bc9a7ccfdf001073da5d,,x,x,x,,,x
+Telefonica,Ecuador,CSD,om-movec,192.168.1.251,wa,65,,,,x,,,,,
+Telefonica,Salvador,Contact Center,om-movca,192.168.1.202,wa,40,,,,x,,,,x,
+Telefonica,Uruguay,API de mensajería,demo-4,192.168.1.32,wa,4,0,5d94ae7a1595a400102f6006,,,x,x,,,x
+Farmacia La Bomba,Costa Rica,Contact Center,demo-6,192.168.1.19,wa,14,,,,x,,,,,
+BMI,Ecuador,Contact Center,om-movgm,192.168.1.204,wa,38,0,5d79463b781e940010ab0b42,,x,x,x,,,x
+Panacredit,Panama,Contact Center,demo-3,192.168.1.5,wa,25,,,,x,,,,,
+Digitaria,Chile,Bot Cruz verde,demo-3,192.168.1.5,wa,30,0,5ebb12bfe87482000ff2fd39,,x,x,x,,,x
+Mall Plaza,Peru,Contact Center,demo-3,192.168.1.5,wa,20,0,5ecc2cb5cff9f4000f63c7b3,,x,x,x,,,x
+Global Bank,Panama,,onpremise,,,,,5e4afd000db2e2000fcbd6da,,,x,,,,
+VTR,Chile,Contact Center,demo-5,192.168.1.254,wa,30,0,5f1959afc0fdc5000c00315f,,x,x,x,,,x
+Tottus,Chile,BOT Tottus,ommarketing,192.168.1.247,wa,,0,,,,,,,,
+Mall Plaza,Chile,Contact Center,demo-3,192.168.1.5,wa,12,0,5d9b39db12ead3000f64ac8d,,x,x,x,,,x
+TurBus,Chile,Contact Center,demo-5,192.168.1.254,wa,36,,,,x,,,,,
+SEGUROS SURA,Chile,Contact Center SAC,demo-4,192.168.1.32,wa,6,0,5de5b3b94dae86001123725c,,x,x,x,,,x
+SEGUROS SURA,Chile,Inspecciones,demo-4,192.168.1.32,wa,11,0,5e4db2cc4918b5000f6643c5,,x,x,x,,,x
+SEGUROS SURA,Chile,BOT Reembolsos,demo-4,192.168.1.32,wa,29,0,5e85f784ea4cc6000f7f4695,,x,x,x,,,x
+Clinica Vespucio,Chile,Contact Center,demo-1,192.168.1.203,wa,62,,,,x,,,,,
+Parque el Sendero,Chile,Contact Center,demo-2,192.168.1.220,wa,45,0,,,x,,x,,,
+Penta Financiero,Chile,Contact Center,demo-1,192.168.1.203,wa,74,0,5d5abae6064db30010b118ed,,x,x,x,,,x
+Agencias WAY,Panama,Contact Center,demo-5,192.168.1.254,wa,41,0,5f202013a7d726000cfeae4e,,x,x,x,,,x
