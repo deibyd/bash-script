@@ -3,8 +3,12 @@
 # by deibyd (20200630): Se agrega logica de filtro de logs, para tomar decision del reinicio del apache
 # by deibyd (20200701): Se volca el logs cuando se encuentra error que amerite un reinico
 # by deibyd (20200702): Se respalda el logs antes de volcar
+# by deibyd (20200708): Para leer desde un archivo los registros de logs que se omitiran y por lo tanto no se tomaran en cuenta
 
-MAILS=max@psychoworld.cl,noc@onemarketer.cl
+HOME_SCRIPT_PATH=/home/hydefus/script
+
+#MAILS=max@psychoworld.cl,noc@onemarketer.cl
+MAILS=noc@onemarketer.cl
 
 CONTROL_FILE="/tmp/check_error_apache_log.control.$(date +%F)"
 APACHE_LOG_ERROR="/var/log/apache2/error.log"
@@ -20,7 +24,17 @@ function write_log() {
 	echo "$1"
 }
 
-CANTIDAD_ERRORES=$(tail -n 10000 $APACHE_LOG_ERROR|grep "$PATRON_ERROR"|grep -v "^#"|wc -l)
+EXCEPTION=""
+
+if [ -f $HOME_SCRIPT_PATH/exception_to_check_error_apache_log.txt ];then
+	while read -r line; do
+		EXCEPTION="$line|$EXCEPTION"
+	done < $HOME_SCRIPT_PATH/exception_to_check_error_apache_log.txt
+fi
+
+EXCEPTION=$(echo "$EXCEPTION"|sed 's/|$//g')
+
+CANTIDAD_ERRORES=$(tail -n 10000 $APACHE_LOG_ERROR|grep "$PATRON_ERROR"|grep -vE "$EXCEPTION"|wc -l)
 THE_LAST_ROW=$(tail -n 10000 $APACHE_LOG_ERROR|grep "$PATRON_ERROR"|grep -v "^#"|tail -n 5|sed 's/^/=> /g'|sed 's/$/<br>/g')
 IS_A_FILTER_ERROR=$(grep -E "$FILTER_ERROR_TO_RESTART_1|$FILTER_ERROR_TO_RESTART_2" $APACHE_LOG_ERROR|wc -l)
 
@@ -49,7 +63,7 @@ if [ "$CANTIDAD_ERRORES" -gt "0" ]; then
 	RESPONSE="${APACHE_RESTARTED}CRITICAL: Se han encontrado $CANTIDAD_ERRORES errores en los logs de apache - maquina $(hostname)"
 	CODIGO=2
 	echo "$RESPONSE_HTML<br><br><strong>Ultimos registros de logs:</strong><br>$THE_LAST_ROW" | mail -a "Content-type: text/html;" -s "$SUBJECT_MESSAGE" $MAILS
-	/home/hydefus/script/pushover.sh  -a monitor -t "$SUBJECT_MESSAGE" -m "$RESPONSE" -p2  -s spacealarm -r 30
+	$HOME_SCRIPT_PATH/pushover.sh  -a monitor -t "$SUBJECT_MESSAGE" -m "$RESPONSE" -p2  -s spacealarm -r 30
 fi
 
 write_log "$RESPONSE"
