@@ -35,9 +35,9 @@ RESPONSE="OK: El peso de la tabla $TABLE esta segun lo esperado (${SIZE_TABLE}MB
 CODIGO=0
 
 if [ $SIZE_TABLE -gt $UMBRAL ];then
-	SUBJECT_MESSAGE="[CRITIAL] TABLE ALERT: $TABLE (${SIZE_TABLE}MB) - $(hostname)"
+	SUBJECT_MESSAGE="[CRITICAL] TABLE ALERT: $TABLE (${SIZE_TABLE}MB) - $(hostname)"
         RESPONSE_MESSAGE="<br><strong>CRITICAL:</strong> El tamaño de la tabla <strong>$TABLE</strong> es de <strong>${SIZE_TABLE}MB</strong> - <strong>$(hostname)</strong>"
-        RESPONSE="CRITiCAL: El tamaño de la tabla $TABLE es de ${SIZE_TABLE}MB - $(hostname)"
+        RESPONSE="CRITICAL: El tamaño de la tabla $TABLE es de ${SIZE_TABLE}MB - $(hostname)"
         echo "$RESPONSE_MESSAGE" | mail -a "Content-type: text/html;" -s "$SUBJECT_MESSAGE" $MAILS
 	$HOME_SCRIPT_PATH/pushover.sh  -a monitor -t "$SUBJECT_MESSAGE" -m "$RESPONSE" -p2  -s spacealarm -r 30
 	CODIGO=2
