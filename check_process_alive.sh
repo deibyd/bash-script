@@ -78,13 +78,14 @@ if [[ "" !=  "$PID" ]]; then
 	write_log "OK - proceso del servicio $SERVICE_NAME esta arriba (PID: $PID)"
 else
 	MESSAGE="ERROR - El servicio $SERVICE_NAME no esta arriba. $RESTART_MESSAGE"
+	HTML_MESSAGE="<strong>ERROR</strong> - El servicio $SERVICE_NAME no esta arriba. $RESTART_MESSAGE<br><strong>Script:</strong> pushReceiver.php<br><strong>Archivo de log: $LOG_FILE</strong>"
 	if [ ! -z $PROCESS_CONTROL ];then
 		restart_service
 	fi
         write_log "$SUBJECT_MESSAGE"
 	write_log "$MESSAGE"
-        echo "$MESSAGE" | mail -s "$SUBJECT_MESSAGE" $MAILS
-	$HOME_SCRIPT_PATH/pushover.sh  -a monitor -t "$SUBJECT_MESSAGE" -m "$RESPONSE" -p2  -s spacealarm -r 30
+        echo "$MESSAGE" | mail -a "Content-type: text/html;" -s "$SUBJECT_MESSAGE" $MAILS
+	$HOME_SCRIPT_PATH/pushover.sh  -a monitor -t "$SUBJECT_MESSAGE" -m "$MESSAGE" -p2  -s spacealarm -r 30
 	exit 2
 fi
 
@@ -94,14 +95,15 @@ echo $LOG_FILE_SIZE_NEW > /tmp/${SERVICE_NAME}_log_file_size.log
 
 if [[ "$LOG_FILE_SIZE_OLD" -eq "$LOG_FILE_SIZE_NEW" ]];then
 	MESSAGE="ERROR - No ha cambiado el log $LOG_FILE del servicio $SERVICE_NAME. $RESTART_MESSAGE"
+	HTML_MESSAGE="<strong>ERROR</strong> - No ha cambiado el log <string>$LOG_FILE</string> del servicio <strong>$SERVICE_NAME</strong>. $RESTART_MESSAGE<br><strong>Script:</strong> pushReceiver.php<br><strong>Archivo de log: $LOG_FILE</strong>"
 	if [ ! -z $PROCESS_CONTROL ];then
 		echo "restart_service"
 	fi
 	restart_service
         write_log "$SUBJECT_MESSAGE"
 	write_log "$MESSAGE"
-        echo "$MESSAGE" | mail -s "$SUBJECT_MESSAGE" $MAILS
-	$HOME_SCRIPT_PATH/pushover.sh  -a monitor -t "$SUBJECT_MESSAGE" -m "$RESPONSE" -p2  -s spacealarm -r 30
+        echo "$MESSAGE" | mail -a "Content-type: text/html;" -s "$SUBJECT_MESSAGE" $MAILS
+	$HOME_SCRIPT_PATH/pushover.sh  -a monitor -t "$SUBJECT_MESSAGE" -m "$MESSAGE" -p2  -s spacealarm -r 30
 	exit 2
 fi
 
