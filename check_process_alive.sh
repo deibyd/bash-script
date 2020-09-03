@@ -84,7 +84,7 @@ else
 	fi
         write_log "$SUBJECT_MESSAGE"
 	write_log "$MESSAGE"
-        echo "$MESSAGE" | mail -a "Content-type: text/html;" -s "$SUBJECT_MESSAGE" $MAILS
+        echo "$HTML_MESSAGE" | mail -a "Content-type: text/html;" -s "$SUBJECT_MESSAGE" $MAILS
 	$HOME_SCRIPT_PATH/pushover.sh  -a monitor -t "$SUBJECT_MESSAGE" -m "$MESSAGE" -p2  -s spacealarm -r 30
 	exit 2
 fi
@@ -102,7 +102,7 @@ if [[ "$LOG_FILE_SIZE_OLD" -eq "$LOG_FILE_SIZE_NEW" ]];then
 	restart_service
         write_log "$SUBJECT_MESSAGE"
 	write_log "$MESSAGE"
-        echo "$MESSAGE" | mail -a "Content-type: text/html;" -s "$SUBJECT_MESSAGE" $MAILS
+        echo "$HTML_MESSAGE" | mail -a "Content-type: text/html;" -s "$SUBJECT_MESSAGE" $MAILS
 	$HOME_SCRIPT_PATH/pushover.sh  -a monitor -t "$SUBJECT_MESSAGE" -m "$MESSAGE" -p2  -s spacealarm -r 30
 	exit 2
 fi
