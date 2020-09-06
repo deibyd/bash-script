@@ -3,8 +3,7 @@
 
 HOME_SCRIPT_PATH=/home/hydefus/script
 MAILS=noc@onemarketer.cl
-QUERY="select concat(a.id,'.*',c.id_context,'.*',c.idservice,'.*',if(c.remote=1, time_to_sec(timediff(now(), c.time)), 'NA')) from context a left join (select max(id) max_id, id_context, idservice from messages  group by id_context, idservice) b on b.id_context = a.id left join messages c on b.max_id = c.id where a.status in ('G', 'R') and c.remote = 1;"
-TABLE="<html><head><style>table, th, td {border: 1px solid black;}</style></head><table><tr><th>context</th><th>service</th><th>segundos</th><th>estado</th><th>nota</th></tr>"
+TABLE="<html><head><style>table, th, td {border: 1px solid black;}</style></head><table><tr><th>context</th><th>nombre</th><th>service</th><th>segundos</th><th>estado</th><th>nota</th></tr>"
 SEND_MAIL="false"
 IS_PUSHOVER="false"
 SUBJECT_MESSAGE="[ALERT] SENT MESSAGES: check $(hostname)"
@@ -54,25 +53,43 @@ function send_mail() {
 	echo "$ECHO_MESSAGE" | mail -a "Content-type: text/html;" -s "$SUBJECT_MESSAGE" $MAILS
 }
 
+EXCEPTION=""
+
+if [ -f $HOME_SCRIPT_PATH/exception_to_check_last_messages_arrives.txt ];then
+	EXCEPTION=$(grep "$(hostname)" $HOME_SCRIPT_PATH/exception_to_check_last_messages_arrives.txt)
+fi
+
+IFS='|' read -ra HOSTNAME_EXCEPTION <<< "$EXCEPTION"
+
+for event in "${HOSTNAME_EXCEPTION[@]}"; do
+	if [ $(echo "$event"|grep -c ",") -gt 0 ];then
+		IFS=',' read -ra FILTERS <<< "$event"
+		APPEND_WHERE="and (c.id_context!=${FILTERS[0]} or c.idservice!=${FILTERS[1]}) "$APPEND_WHERE
+	fi
+done
+
+QUERY="select concat(a.id,'.*',c.id_context,'.*',c.idservice,'.*',if(c.remote=1, time_to_sec(timediff(now(), c.time)), 'NA'),'.*',a.push_name) from context a left join (select max(id) max_id, id_context, idservice from messages  group by id_context, idservice) b on b.id_context = a.id left join messages c on b.max_id = c.id where a.status in ('G', 'R') and c.remote = 1 $APPEND_WHERE;"
+
 IFS=' ' read -ra EVENTS <<< "$(get_databases)"
 
 for event in "${EVENTS[@]}"; do
 	IFS='.*' read -ra COLUMN <<< $event
-	if [ ${COLUMN[6]} -gt $CRITICAL ];then
-		write_log "CRTICAL: context: ${COLUMN[2]} - service: ${COLUMN[4]} - segundos: ${COLUMN[6]} tiene mas de $CRITICAL segundos"
-		SEND_MAIL="true"
-		IS_PUSHOVER="true"
-		TABLE="$TABLE<tr><td>${COLUMN[2]}</td><td>${COLUMN[4]}</td><td>${COLUMN[6]}</td><td>CRITICAL</td><td>tiene más de $CRITICAL segundos</td></tr>"
-	elif [ ${COLUMN[6]} -gt $WARNING ] && [ ${COLUMN[6]} -le $CRITICAL ];then
-		write_log "WARNING: context: ${COLUMN[2]} - service: ${COLUMN[4]} - segundos: ${COLUMN[6]} tiene mas de $WARNING segundos"
-		SEND_MAIL="true"
-		TABLE="$TABLE<tr><td>${COLUMN[2]}</td><td>${COLUMN[4]}</td><td>${COLUMN[6]}</td><td>WARNING</td><td>tiene más de $WARNING segundos</td></tr>"
-	else
-		write_log "OK: context: ${COLUMN[2]} - service: ${COLUMN[4]} - segundos: ${COLUMN[6]} está dentro de los tiempos esperados"
-		TABLE="$TABLE<tr><td>${COLUMN[2]}</td><td>${COLUMN[4]}</td><td>${COLUMN[6]}</td><td>OK</td><td>está dentro de los tiempos esperados</td></tr>"
+	if [ ! -z ${COLUMN[6]} ];then
+		if [ ${COLUMN[6]} -gt $CRITICAL ];then
+			write_log "CRTICAL: context: ${COLUMN[2]} - push_name: ${COLUMN[8]} - service: ${COLUMN[4]} - segundos: ${COLUMN[6]} tiene mas de $CRITICAL segundos"
+			SEND_MAIL="true"
+			IS_PUSHOVER="true"
+			TABLE="$TABLE<tr><td>${COLUMN[2]}</td><td>${COLUMN[8]}</td><td>${COLUMN[4]}</td><td>${COLUMN[6]}</td><td>CRITICAL</td><td>tiene más de $CRITICAL segundos</td></tr>"
+		elif [ ${COLUMN[6]} -gt $WARNING ] && [ ${COLUMN[6]} -le $CRITICAL ];then
+			write_log "WARNING: context: ${COLUMN[2]} - push_name: ${COLUMN[8]} - service: ${COLUMN[4]} - segundos: ${COLUMN[6]} tiene mas de $WARNING segundos"
+			SEND_MAIL="true"
+			TABLE="$TABLE<tr><td>${COLUMN[2]}</td><td>${COLUMN[8]}</td><td>${COLUMN[4]}</td><td>${COLUMN[6]}</td><td>WARNING</td><td>tiene más de $WARNING segundos</td></tr>"
+		else
+			write_log "OK: context: ${COLUMN[2]} - push_name: ${COLUMN[8]} - service: ${COLUMN[4]} - segundos: ${COLUMN[6]} está dentro de los tiempos esperados"
+			TABLE="$TABLE<tr><td>${COLUMN[2]}</td><td>${COLUMN[8]}</td><td>${COLUMN[4]}</td><td>${COLUMN[6]}</td><td>OK</td><td>está dentro de los tiempos esperados</td></tr>"
+		fi
 	fi
 done
-
 TABLE="$TABLE</table></html>"
 
 if [ $SEND_MAIL == "true" ];then
