@@ -1,1 +1,1 @@
-# onemarketer-script
+# bash-script
